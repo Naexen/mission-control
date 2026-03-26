@@ -121,6 +121,53 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true })
     }
 
+    if (action === 'run-command') {
+      const { command } = body
+      if (!command || typeof command !== 'string') {
+        return NextResponse.json({ error: 'command is required' }, { status: 400 })
+      }
+
+      // Only allow hermes commands for security
+      const trimmed = command.trim()
+      if (!trimmed.startsWith('hermes')) {
+        return NextResponse.json({ error: 'Only hermes commands are allowed' }, { status: 400 })
+      }
+
+      // Parse command into binary + args
+      const parts = trimmed.split(/\s+/)
+      const hermesBin = join(HERMES_HOME, 'hermes-agent', 'venv', 'bin', 'hermes')
+      const bin = existsSync(hermesBin) ? hermesBin : parts[0]
+      const args = parts.slice(1)
+
+      // Add --non-interactive flags for commands that might prompt
+      const env = {
+        ...process.env,
+        HOME: existsSync(join(dataDir, '.hermes')) ? dataDir : homeDir,
+        HERMES_NONINTERACTIVE: '1',
+        CI: '1',
+        PATH: `${join(dataDir, '.local', 'bin')}:${process.env.PATH || ''}`,
+      }
+
+      try {
+        const { runCommand } = require('@/lib/command')
+        const result = await runCommand(bin, args, {
+          timeoutMs: 30_000,
+          env,
+        })
+        return NextResponse.json({
+          success: result.code === 0,
+          output: (result.stdout + '\n' + result.stderr).trim(),
+          code: result.code,
+        })
+      } catch (err: any) {
+        return NextResponse.json({
+          success: false,
+          error: err?.message || 'Command failed',
+          output: (err?.stdout || '') + '\n' + (err?.stderr || ''),
+        })
+      }
+    }
+
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 })
   } catch (err: any) {
     logger.error({ err }, 'Hermes hook management failed')

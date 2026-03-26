@@ -370,8 +370,8 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
                 Run these commands in a terminal to authenticate via browser:
               </p>
               <div className="space-y-2">
-                <CopyableCommand command="hermes model openai" label="Set OpenAI as provider" />
-                <CopyableCommand command="hermes setup" label="Or run full interactive setup" />
+                <CopyableCommand command="hermes model openai" label="Set OpenAI as provider" runnable />
+                <CopyableCommand command="hermes setup" label="Or run full setup" runnable />
               </div>
               <p className="text-muted-foreground/50 text-[10px]">
                 This opens a browser window for OAuth login. No API key needed.
@@ -521,8 +521,8 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
             <p className="font-medium text-foreground/80">Set up messaging channels:</p>
 
             <div className="space-y-2.5">
-              <CopyableCommand command="hermes gateway setup" label="1. Configure a platform" />
-              <CopyableCommand command="hermes gateway start" label="2. Start the gateway" />
+              <CopyableCommand command="hermes gateway setup" label="1. Configure a platform" runnable />
+              <CopyableCommand command="hermes gateway start" label="2. Start the gateway" runnable />
               <p className="text-muted-foreground/70 pl-1">3. Send a message to your bot to test</p>
             </div>
 
@@ -556,10 +556,10 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
 
           <div className="p-3 rounded-lg border border-border/20 bg-secondary/10 text-xs space-y-3">
             <p className="font-medium text-foreground/80">Quick commands:</p>
-            <CopyableCommand command="hermes" label="Start chatting" />
-            <CopyableCommand command="hermes setup" label="Full interactive setup" />
-            <CopyableCommand command="hermes gateway setup" label="Set up messaging channels" />
-            <CopyableCommand command="hermes gateway start" label="Start the gateway" />
+            <CopyableCommand command="hermes" label="Start chatting" runnable />
+            <CopyableCommand command="hermes setup" label="Full interactive setup" runnable />
+            <CopyableCommand command="hermes gateway setup" label="Set up messaging" runnable />
+            <CopyableCommand command="hermes gateway start" label="Start the gateway" runnable />
           </div>
 
           <div className="flex justify-end">
@@ -572,28 +572,82 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
   )
 }
 
-function CopyableCommand({ command, label }: { command: string; label: string }) {
+function CopyableCommand({ command, label, runnable = false, onOutput }: {
+  command: string
+  label: string
+  runnable?: boolean
+  onOutput?: (output: string) => void
+}) {
   const [copied, setCopied] = useState(false)
+  const [running, setRunning] = useState(false)
+  const [output, setOutput] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleRun = async () => {
+    setRunning(true)
+    setOutput(null)
+    setError(null)
+    try {
+      const res = await fetch('/api/hermes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'run-command', command }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setOutput(data.output || 'Done')
+        onOutput?.(data.output || '')
+      } else {
+        setError(data.error || 'Command failed')
+        if (data.output) setOutput(data.output)
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to run command')
+    } finally {
+      setRunning(false)
+    }
+  }
+
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex-1 bg-black/20 rounded px-2.5 py-1.5 font-mono text-[11px] flex items-center justify-between gap-2">
-        <div>
-          <span className="text-muted-foreground/50">$ </span>
-          <span className="text-foreground/80">{command}</span>
+    <div className="space-y-1">
+      <div className="flex items-center gap-2">
+        <div className="flex-1 bg-black/20 rounded px-2.5 py-1.5 font-mono text-[11px] flex items-center justify-between gap-2">
+          <div>
+            <span className="text-muted-foreground/50">$ </span>
+            <span className="text-foreground/80">{command}</span>
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+            {runnable && (
+              <button
+                type="button"
+                onClick={handleRun}
+                disabled={running}
+                className="text-[10px] px-1.5 py-0.5 rounded bg-primary/20 text-primary hover:bg-primary/30 transition-colors disabled:opacity-50"
+              >
+                {running ? 'Running...' : 'Run'}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={async () => {
+                await navigator.clipboard.writeText(command)
+                setCopied(true)
+                setTimeout(() => setCopied(false), 1500)
+              }}
+              className="text-[10px] px-1.5 py-0.5 rounded bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {copied ? 'Copied' : 'Copy'}
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          onClick={async () => {
-            await navigator.clipboard.writeText(command)
-            setCopied(true)
-            setTimeout(() => setCopied(false), 1500)
-          }}
-          className="text-[10px] px-1.5 py-0.5 rounded bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors shrink-0"
-        >
-          {copied ? 'Copied' : 'Copy'}
-        </button>
+        <span className="text-[10px] text-muted-foreground/50 w-32 shrink-0">{label}</span>
       </div>
-      <span className="text-[10px] text-muted-foreground/50 w-32 shrink-0">{label}</span>
+      {output && (
+        <div className="bg-black/30 rounded px-2 py-1.5 max-h-16 overflow-y-auto ml-0">
+          <pre className="font-mono text-[10px] text-muted-foreground/60 whitespace-pre-wrap break-all">{output}</pre>
+        </div>
+      )}
+      {error && <p className="text-[10px] text-red-400 ml-0">{error}</p>}
     </div>
   )
 }
