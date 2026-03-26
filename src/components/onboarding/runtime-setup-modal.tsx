@@ -321,38 +321,46 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
 
       {step === 'verify' && (
         <div className="space-y-4">
-          <div className="p-4 rounded-lg border border-border/30 bg-secondary/20 space-y-3">
-            <p className="text-sm font-medium">Verify Connection</p>
-            <p className="text-xs text-muted-foreground">
-              Check that Hermes can communicate with Mission Control.
-            </p>
-          </div>
-
+          {/* Status checks */}
           <div className="grid grid-cols-2 gap-3">
             <StatusCard label="Installed" ok={hermesStatus?.installed} />
             <StatusCard label="Hook Active" ok={hermesStatus?.hookInstalled} />
-            <StatusCard label="Gateway Running" ok={hermesStatus?.gatewayRunning} />
+            <StatusCard label="Gateway" ok={hermesStatus?.gatewayRunning} subtitle={hermesStatus?.gatewayRunning ? 'Running' : 'Not started (optional)'} />
             <StatusCard label="Sessions" value={hermesStatus?.activeSessions || 0} ok={true} />
           </div>
 
-          <div className="p-3 rounded-lg border border-border/20 bg-secondary/10 text-xs text-muted-foreground space-y-1.5">
-            <p className="font-medium text-foreground/80">Provider Configuration</p>
-            <p>
-              Hermes uses LLM providers configured via environment variables or its config file.
-              Set up your provider keys in <code className="text-[11px] bg-black/20 px-1 rounded">~/.hermes/config.yaml</code> or via environment:
+          {/* Provider config — actionable */}
+          <div className="p-3 rounded-lg border border-border/20 bg-secondary/10 text-xs space-y-2">
+            <p className="font-medium text-foreground/80">Next: Configure a Provider</p>
+            <p className="text-muted-foreground">
+              Hermes needs an LLM provider to work. Run <code className="text-[11px] bg-black/20 px-1 rounded">hermes setup</code> or
+              set an API key:
             </p>
-            <div className="mt-2 bg-black/20 rounded p-2 font-mono text-[11px] space-y-0.5">
+            <div className="bg-black/20 rounded p-2 font-mono text-[11px] space-y-0.5">
+              <p><span className="text-muted-foreground/50">#</span> <span className="text-muted-foreground/40">Option 1: Nous Portal (free tier available)</span></p>
+              <p><span className="text-muted-foreground/50">$</span> hermes model</p>
+              <p className="mt-1"><span className="text-muted-foreground/50">#</span> <span className="text-muted-foreground/40">Option 2: Set API key directly</span></p>
               <p><span className="text-muted-foreground/50">$</span> export ANTHROPIC_API_KEY=sk-ant-...</p>
               <p><span className="text-muted-foreground/50">$</span> export OPENAI_API_KEY=sk-...</p>
             </div>
+            <p className="text-muted-foreground/50 text-[10px]">
+              You can also configure providers in ~/.hermes/config.yaml
+            </p>
           </div>
+
+          {/* Gateway info — non-blocking */}
+          {!hermesStatus?.gatewayRunning && (
+            <div className="p-2.5 rounded-lg border border-border/10 bg-secondary/5 text-xs text-muted-foreground/60">
+              The messaging gateway (Telegram, Discord, etc.) is optional. Start it later with <code className="text-[11px] bg-black/20 px-1 rounded">hermes gateway</code>
+            </div>
+          )}
 
           {error && <p className="text-xs text-red-400">{error}</p>}
 
           <div className="flex justify-end gap-2">
             <Button variant="ghost" size="sm" onClick={() => setStep('hook')}>Back</Button>
-            <Button size="sm" onClick={() => { fetchStatus(); setStep('done') }}>
-              Continue
+            <Button size="sm" onClick={onComplete}>
+              Done
             </Button>
           </div>
         </div>
@@ -378,7 +386,7 @@ function HermesSetup({ onClose, onComplete }: { onClose: () => void; onComplete:
   )
 }
 
-function StatusCard({ label, ok, value }: { label: string; ok?: boolean; value?: number }) {
+function StatusCard({ label, ok, value, subtitle }: { label: string; ok?: boolean; value?: number; subtitle?: string }) {
   return (
     <div className={`p-2.5 rounded-lg border text-xs ${
       ok ? 'border-green-500/20 bg-green-500/5' : 'border-border/20 bg-secondary/10'
@@ -393,6 +401,7 @@ function StatusCard({ label, ok, value }: { label: string; ok?: boolean; value?:
           </span>
         )}
       </div>
+      {subtitle && <p className="text-[10px] text-muted-foreground/40 mt-0.5">{subtitle}</p>}
     </div>
   )
 }
