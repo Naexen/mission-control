@@ -141,11 +141,12 @@ function detectHermes(): RuntimeStatus {
   if (installed) {
     try {
       const path = require('node:path')
-      const dataDir = config.dataDir || '.data'
+      const dataDir = path.resolve(config.dataDir || '.data')
       const homeDir = require('node:os').homedir()
       const candidates = [
         process.env.HERMES_BIN,
         path.join(dataDir, '.local', 'bin', 'hermes'),
+        path.join(dataDir, '.hermes', 'hermes-agent', 'venv', 'bin', 'hermes'),
         path.join(homeDir, '.local', 'bin', 'hermes'),
         path.join(homeDir, '.hermes', 'hermes-agent', 'venv', 'bin', 'hermes'),
         'hermes-agent',

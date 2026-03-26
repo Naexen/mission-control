@@ -59,13 +59,14 @@ function hasHermesCliBinary(): boolean {
     return hermesBinaryCache.installed
   }
 
-  // Check common install locations including the data directory's local bin
-  // (Docker installs end up at {dataDir}/.local/bin/hermes)
-  const dataDir = config.dataDir || '.data'
+  // Check common install locations including the data directory's local bin.
+  // In Docker, HOME=/nonexistent so we also check dataDir as effective HOME.
+  const dataDir = require('node:path').resolve(config.dataDir || '.data')
   const homeDir = config.homeDir || process.env.HOME || ''
   const candidates = [
     process.env.HERMES_BIN,
     join(dataDir, '.local', 'bin', 'hermes'),
+    join(dataDir, '.hermes', 'hermes-agent', 'venv', 'bin', 'hermes'),
     join(homeDir, '.local', 'bin', 'hermes'),
     join(homeDir, '.hermes', 'hermes-agent', 'venv', 'bin', 'hermes'),
     'hermes-agent',
