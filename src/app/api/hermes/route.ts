@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
         const { runCommand } = require('@/lib/command')
 
         // Ensure OpenAI is selected before invoking OAuth device code flow.
-        await runCommand(bin, ['config', 'set', 'model.provider', 'openai'], {
+        await runCommand(bin, ['config', 'set', 'model.provider', 'openai-codex'], {
           timeoutMs: 15_000,
           env: {
             ...baseEnv,

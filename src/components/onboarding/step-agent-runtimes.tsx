@@ -7,7 +7,7 @@ import { RuntimeSetupModal } from './runtime-setup-modal'
 
 const HERMES_PROVIDERS = [
   { id: 'anthropic', label: 'Anthropic', hermesId: 'anthropic', models: ['claude-sonnet-4-6', 'claude-opus-4-6', 'claude-haiku-4-5'], env: 'ANTHROPIC_API_KEY' },
-  { id: 'openai', label: 'OpenAI (API Key)', hermesId: 'openai', models: ['gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano', 'o3', 'o4-mini', 'codex-mini-latest', 'gpt-5.3-codex'], env: 'OPENAI_API_KEY' },
+  { id: 'openai', label: 'OpenAI (API Key)', hermesId: 'openai-codex', models: ['gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano', 'o3', 'o4-mini', 'codex-mini-latest', 'gpt-5.3-codex'], env: 'OPENAI_API_KEY' },
   { id: 'openai_oauth', label: 'OpenAI (OAuth)', hermesId: 'openai', models: ['gpt-4.1', 'gpt-4.1-mini', 'o3', 'o4-mini', 'codex-mini-latest', 'gpt-5.3-codex'], env: 'OPENAI_API_KEY' },
   { id: 'openrouter', label: 'OpenRouter', hermesId: 'openrouter', models: ['anthropic/claude-sonnet-4-6', 'openai/gpt-4.1'], env: 'OPENROUTER_API_KEY' },
   { id: 'google', label: 'Google AI', hermesId: 'google', models: ['gemini-2.5-pro', 'gemini-2.5-flash'], env: 'GOOGLE_API_KEY' },
