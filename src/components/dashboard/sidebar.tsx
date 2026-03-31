@@ -6,6 +6,7 @@ import { useMissionControl } from '@/store'
 import { useNavigateToPanel } from '@/lib/navigation'
 import { createClientLogger } from '@/lib/client-logger'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 const log = createClientLogger('Sidebar')
 
@@ -64,6 +65,7 @@ const menuItems: MenuItem[] = [
 ]
 
 export function Sidebar() {
+  const t = useTranslations('sidebar')
   const { activeTab, connection, sessions } = useMissionControl()
   const navigateToPanel = useNavigateToPanel()
   const [systemStats, setSystemStats] = useState<SystemStats | null>(null)
@@ -95,8 +97,8 @@ export function Sidebar() {
             />
           </div>
           <div>
-            <h2 className="font-bold text-foreground">Mission Control</h2>
-            <p className="text-xs text-muted-foreground">ClawdBot Orchestration</p>
+            <h2 className="font-bold text-foreground">{t('missionControl')}</h2>
+            <p className="text-xs text-muted-foreground">{t('clawdBot')}</p>
           </div>
         </div>
       </div>
@@ -138,7 +140,7 @@ export function Sidebar() {
         {/* Connection Status */}
         <div className="bg-secondary rounded-lg p-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">Gateway</span>
+            <span className="text-sm font-medium text-foreground">{t('gateway')}</span>
             <div className="flex items-center space-x-1">
               <div className={`w-2 h-2 rounded-full ${
                 connection.isConnected 
@@ -165,7 +167,7 @@ export function Sidebar() {
         {/* Session Stats */}
         <div className="bg-secondary rounded-lg p-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-foreground">Sessions</span>
+            <span className="text-sm font-medium text-foreground">{t('sessions')}</span>
             <span className="text-xs text-muted-foreground">
               {activeSessions}/{totalSessions}
             </span>
@@ -178,7 +180,7 @@ export function Sidebar() {
         {/* System Stats */}
         {systemStats && (
           <div className="bg-secondary rounded-lg p-3">
-            <div className="text-sm font-medium text-foreground mb-2">System</div>
+            <div className="text-sm font-medium text-foreground mb-2">{t('system')}</div>
             <div className="space-y-1 text-xs text-muted-foreground">
               <div className="flex justify-between">
                 <span>Memory:</span>

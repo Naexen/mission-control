@@ -270,8 +270,8 @@ export function AgentNetwork({ agents, sessions }: AgentNetworkProps) {
             <circle cx="12" cy="12" r="2" />
             <path d="M6 4h4M4 6v4M12 6v4M6 12h4" />
           </svg>
-          <p>No agent network to display</p>
-          <p className="text-xs mt-1">Agent connections will appear here</p>
+          <p>{t('noAgentNetwork')}</p>
+          <p className="text-xs mt-1">{t('connectionsAppearHere')}</p>
         </div>
       </div>
     )

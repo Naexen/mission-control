@@ -291,7 +291,11 @@
     "switchToFull": "Switch to full mode",
     "goToOverview": "Go to Overview",
     "requiresGateway": "Requires Gateway",
-    "configureGateway": "Configure a gateway to enable this panel."
+    "configureGateway": "Configure a gateway to enable this panel.",
+    "switchToFullMode": "Switch to full mode",
+    "gatewayConnected": "Gateway Connected",
+    "gatewayDisconnected": "Gateway Disconnected",
+    "offline": "Offline"
   },
   "onboarding": {
     "stationOnline": "Station Online",
@@ -2193,6 +2197,30 @@
     "systemRunning": "System running",
     "totalProcessed": "Total processed",
     "past24h": "Past 24h",
-    "active": "{n}% active"
+    "active": "{n}% active",
+    "overview": "Overview"
+  },
+  "launchSequence": {
+    "title": "Launch Sequence",
+    "installedReady": "Installed and ready",
+    "agentRegistered": "Agent registered",
+    "tasksInQueue": "Tasks in queue"
+  },
+  "sessions": {
+    "activeSessions": "Active Sessions",
+    "noSessionsActive": "No sessions active",
+    "sessionsWillAppear": "Sessions will appear here when agents start"
+  },
+  "agentNetwork": {
+    "noAgentNetwork": "No agent network to display",
+    "agentNetwork": "Agent Network",
+    "connectionsAppearHere": "Agent connections will appear here"
+  },
+  "sidebar": {
+    "missionControl": "Mission Control",
+    "clawdBot": "ClawdBot Orchestration",
+    "gateway": "Gateway",
+    "sessions": "Sessions",
+    "system": "System"
   }
 }

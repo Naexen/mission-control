@@ -291,7 +291,11 @@
     "switchToFull": "切换到完整模式",
     "goToOverview": "前往概览",
     "requiresGateway": "需要网关",
-    "configureGateway": "配置网关以启用此面板。"
+    "configureGateway": "配置网关以启用此面板。",
+    "switchToFullMode": "切换到完整模式",
+    "gatewayConnected": "网关已连接",
+    "gatewayDisconnected": "网关已断开",
+    "offline": "离线"
   },
   "onboarding": {
     "stationOnline": "站点已上线",
@@ -2199,6 +2203,30 @@
     "systemRunning": "系统运行中",
     "totalProcessed": "总处理量",
     "past24h": "过去24小时",
-    "active": "{n}% 活跃"
+    "active": "{n}% 活跃",
+    "overview": "概览"
+  },
+  "launchSequence": {
+    "title": "启动序列",
+    "installedReady": "已安装就绪",
+    "agentRegistered": "智能体已注册",
+    "tasksInQueue": "任务队列中"
+  },
+  "sessions": {
+    "activeSessions": "活跃会话",
+    "noSessionsActive": "无活跃会话",
+    "sessionsWillAppear": "智能体启动后会话将显示在这里"
+  },
+  "agentNetwork": {
+    "noAgentNetwork": "无智能体网络",
+    "agentNetwork": "智能体网络",
+    "connectionsAppearHere": "智能体连接将显示在这里"
+  },
+  "sidebar": {
+    "missionControl": "任务控制中心",
+    "clawdBot": "ClawdBot 编排",
+    "gateway": "网关",
+    "sessions": "会话",
+    "system": "系统"
   }
 }

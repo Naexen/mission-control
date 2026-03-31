@@ -164,8 +164,8 @@ export function SessionsList({ sessions }: SessionsListProps) {
         {sessions.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground">
             <div className="text-4xl mb-2">🤖</div>
-            <p>No sessions active</p>
-            <p className="text-xs">Sessions will appear here when agents start</p>
+            <p>{t('noSessionsActive')}</p>
+            <p className="text-xs">{t('sessionsWillAppear')}</p>
           </div>
         ) : (
           <div className="space-y-3">

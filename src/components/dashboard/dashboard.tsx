@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { useMissionControl } from '@/store'
+import { useTranslations } from 'next-intl'
 import { useNavigateToPanel } from '@/lib/navigation'
 import { useSmartPoll } from '@/lib/use-smart-poll'
 import { SignalPill, getLocalOsStatus, getProviderHealth, getMcHealth } from './widget-primitives'
@@ -11,6 +12,7 @@ import { WidgetGrid } from './widget-grid'
 import type { DbStats, ClaudeStats, LogLike, DashboardData } from './widget-primitives'
 
 export function Dashboard() {
+  const t = useTranslations('dashboard')
   const {
     sessions,
     setSessions,
@@ -267,7 +269,7 @@ export function Dashboard() {
       <section className="rounded-xl border border-border bg-card p-4">
         <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="text-2xs uppercase tracking-[0.12em] text-muted-foreground">Overview</div>
+            <div className="text-2xs uppercase tracking-[0.12em] text-muted-foreground">{t('overview')}</div>
             <h2 className="text-lg font-semibold text-foreground">
               {isLocal ? 'Local Agent Runtime' : 'Gateway Control Plane'}
             </h2>

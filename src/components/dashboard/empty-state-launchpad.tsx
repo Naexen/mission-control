@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 
 interface RuntimeStatus {
   id: string
@@ -58,7 +59,7 @@ export function EmptyStateLaunchpad({ agentCount, taskCount, onNavigate }: Props
   return (
     <div className="rounded-xl border border-border bg-card p-6">
       <div className="text-center mb-6">
-        <h2 className="text-lg font-semibold text-foreground mb-1">Launch Sequence</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-1">{t('title')}</h2>
         <p className="text-sm text-muted-foreground">
           Complete each step to bring your station online.
         </p>
@@ -79,7 +80,7 @@ export function EmptyStateLaunchpad({ agentCount, taskCount, onNavigate }: Props
                   {r.name}
                 </div>
               ))}
-              <p className="text-2xs text-muted-foreground/50 mt-1">Installed and ready</p>
+              <p className="text-2xs text-muted-foreground/50 mt-1">{t('installedReady')}</p>
             </div>
           }
           pendingContent={
@@ -106,7 +107,7 @@ export function EmptyStateLaunchpad({ agentCount, taskCount, onNavigate }: Props
           active={hasRuntimes && !hasAgents}
           doneContent={
             <>
-              <p className="text-xs text-emerald-400/80 mb-1">Agent registered</p>
+              <p className="text-xs text-emerald-400/80 mb-1">{t('agentRegistered')}</p>
               <button
                 className="text-2xs text-muted-foreground hover:text-foreground"
                 onClick={() => onNavigate('agents')}
@@ -140,7 +141,7 @@ export function EmptyStateLaunchpad({ agentCount, taskCount, onNavigate }: Props
           active={hasAgents && !hasTasks}
           doneContent={
             <>
-              <p className="text-xs text-emerald-400/80 mb-1">Tasks in queue</p>
+              <p className="text-xs text-emerald-400/80 mb-1">{t('tasksInQueue')}</p>
               <button
                 className="text-2xs text-muted-foreground hover:text-foreground"
                 onClick={() => onNavigate('tasks')}
