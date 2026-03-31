@@ -147,7 +147,14 @@
     "full": "Full",
     "strict": "Strict",
     "minimal": "Minimal",
-    "standard": "Standard"
+    "standard": "Standard",
+    "hermesAgent": "Hermes Agent",
+    "hookProfile": "Hook Profile",
+    "interfaceMode": "Interface Mode",
+    "account": "Account",
+    "google": "Google",
+    "connected": "Connected",
+    "notConnected": "Not connected"
   },
   "boot": {
     "missionControl": "Mission Control",
@@ -1173,7 +1180,9 @@
     "decommissionQueuedDryRun": "Decommission job queued for {slug} (dry-run)",
     "decommissionQueued": "Decommission job queued for {slug}",
     "optionalReason": "Optional reason for {action}:",
-    "jobActioned": "Job #{jobId} {action}d"
+    "jobActioned": "Job #{jobId} {action}d",
+    "tenantList": "Tenant list",
+    "provisioningJobs": "Provisioning jobs"
   },
   "auditTrail": {
     "title": "Audit Trail",
@@ -2222,5 +2231,14 @@
     "gateway": "Gateway",
     "sessions": "Sessions",
     "system": "System"
+  },
+  "systemMonitor": {
+    "title": "System Monitor",
+    "memory": "Memory",
+    "disk": "Disk",
+    "noDiskData": "No disk data available",
+    "topProcesses": "Top Processes",
+    "process": "Process",
+    "networkIO": "Network I/O"
   }
 }

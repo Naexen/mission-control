@@ -1066,7 +1066,7 @@ export function CreateAgentModal({
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl">+</span>
-                  <span className="font-semibold text-foreground">Custom</span>
+                  <span className="font-semibold text-foreground">{t('custom')}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">{t('customDesc')}</p>
               </Button>

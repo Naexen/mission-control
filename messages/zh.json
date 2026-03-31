@@ -147,7 +147,14 @@
     "full": "完整",
     "strict": "严格",
     "minimal": "最小",
-    "standard": "标准"
+    "standard": "标准",
+    "hermesAgent": "Hermes 智能体",
+    "hookProfile": "安全策略",
+    "interfaceMode": "界面模式",
+    "account": "账户",
+    "google": "Google",
+    "connected": "已连接",
+    "notConnected": "未连接"
   },
   "boot": {
     "missionControl": "任务控制中心",
@@ -1415,7 +1422,9 @@
     "decommissionQueuedDryRun": "已为 {slug} 排队预演停用",
     "decommissionQueued": "已为 {slug} 排队停用",
     "optionalReason": "{action} 的可选原因：",
-    "jobActioned": "任务 #{jobId} 已{action}"
+    "jobActioned": "任务 #{jobId} 已{action}",
+    "tenantList": "租户列表",
+    "provisioningJobs": "配置任务"
   },
   "auditTrail": {
     "title": "审计日志",
@@ -2228,5 +2237,14 @@
     "gateway": "网关",
     "sessions": "会话",
     "system": "系统"
+  },
+  "systemMonitor": {
+    "title": "系统监控",
+    "memory": "内存",
+    "disk": "磁盘",
+    "noDiskData": "无磁盘数据",
+    "topProcesses": "主要进程",
+    "process": "进程",
+    "networkIO": "网络 I/O"
   }
 }

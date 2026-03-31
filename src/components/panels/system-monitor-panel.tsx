@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState, useCallback, useRef } from 'react'
 import { useSmartPoll } from '@/lib/use-smart-poll'
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts'
@@ -93,6 +94,7 @@ function formatTime(ts: number): string {
 }
 
 export function SystemMonitorPanel() {
+  const t = useTranslations('systemMonitor')
   const [latest, setLatest] = useState<Snapshot | null>(null)
   const [history, setHistory] = useState<TimePoint[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -171,7 +173,7 @@ export function SystemMonitorPanel() {
   return (
     <div className="p-5 space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold">System Monitor</h2>
+        <h2 className="text-lg font-semibold">{t('title')}</h2>
         {error && <span className="text-xs text-red-500">{error}</span>}
       </div>
 
@@ -212,7 +214,7 @@ export function SystemMonitorPanel() {
         {/* Memory */}
         <section className="rounded-xl border border-border bg-card p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium">Memory</h3>
+            <h3 className="text-sm font-medium">{t('memory')}</h3>
             <span className="text-2xl font-mono font-bold tabular-nums">{latest.memory.usagePercent}%</span>
           </div>
           <div className="text-xs text-muted-foreground mb-2">
@@ -248,10 +250,10 @@ export function SystemMonitorPanel() {
         {/* Disk */}
         <section className="rounded-xl border border-border bg-card p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium">Disk</h3>
+            <h3 className="text-sm font-medium">{t('disk')}</h3>
           </div>
           {latest.disk.length === 0 ? (
-            <div className="text-xs text-muted-foreground">No disk data available</div>
+            <div className="text-xs text-muted-foreground">{t('noDiskData')}</div>
           ) : (
             <div className="space-y-3">
               {latest.disk.map(d => (
@@ -328,7 +330,7 @@ export function SystemMonitorPanel() {
         {/* Processes */}
         <section className="rounded-xl border border-border bg-card p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium">Top Processes</h3>
+            <h3 className="text-sm font-medium">{t('topProcesses')}</h3>
             <span className="text-xs text-muted-foreground">{latest.processes.length} shown</span>
           </div>
           {latest.processes.length === 0 ? (
@@ -339,7 +341,7 @@ export function SystemMonitorPanel() {
             <div className="space-y-0">
               {/* Header */}
               <div className="flex items-center text-[10px] text-muted-foreground uppercase tracking-wider pb-1.5 border-b border-border mb-1">
-                <span className="flex-1">Process</span>
+                <span className="flex-1">{t('process')}</span>
                 <span className="w-14 text-right">CPU</span>
                 <span className="w-14 text-right">Mem</span>
                 <span className="w-16 text-right">RSS</span>
@@ -367,7 +369,7 @@ export function SystemMonitorPanel() {
         {/* Network I/O */}
         <section className="rounded-xl border border-border bg-card p-4">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium">Network I/O</h3>
+            <h3 className="text-sm font-medium">{t('networkIO')}</h3>
             {history.length > 0 && (
               <div className="text-right">
                 <span className="text-xs text-muted-foreground">

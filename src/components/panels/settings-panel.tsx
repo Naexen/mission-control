@@ -572,7 +572,7 @@ export function SettingsPanel() {
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <p className="text-xs font-medium">Hermes Agent</p>
+                    <p className="text-xs font-medium">{t('hermesAgent')}</p>
                     <span className={`text-2xs px-1.5 py-0.5 rounded ${
                       hermesStatus.gatewayRunning
                         ? 'bg-green-500/15 text-green-400'
@@ -794,7 +794,7 @@ export function SettingsPanel() {
       {activeCategory === 'profiles' && (
         <div className="space-y-3">
           <div className="bg-card border border-border rounded-lg p-4">
-            <h3 className="text-sm font-medium text-foreground mb-1">Hook Profile</h3>
+            <h3 className="text-sm font-medium text-foreground mb-1">{t('hookProfile')}</h3>
             <p className="text-xs text-muted-foreground mb-4">
               Controls how aggressively security hooks scan tool calls and agent outputs.
             </p>
@@ -1035,7 +1035,7 @@ function InterfaceModeSelector() {
 
   return (
     <div className="bg-card border border-border rounded-lg p-4">
-      <h3 className="text-sm font-medium text-foreground mb-1">Interface Mode</h3>
+      <h3 className="text-sm font-medium text-foreground mb-1">{ts('interfaceMode')}</h3>
       <p className="text-xs text-muted-foreground mb-3">
         Controls how many panels appear in the sidebar.
       </p>
@@ -1100,6 +1100,7 @@ function formatLabel(key: string): string {
 // ---------------------------------------------------------------------------
 
 function AccountOAuthSection() {
+  const t = useTranslations('settings')
   const { currentUser } = useMissionControl()
   const [disconnecting, setDisconnecting] = useState(false)
   const [feedback, setFeedback] = useState<{ ok: boolean; text: string } | null>(null)
@@ -1150,11 +1151,11 @@ function AccountOAuthSection() {
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-foreground">Google</span>
+                <span className="text-sm font-medium text-foreground">{t('google')}</span>
                 {isGoogleConnected ? (
-                  <span className="text-2xs px-1.5 py-0.5 rounded bg-green-500/15 text-green-400">Connected</span>
+                  <span className="text-2xs px-1.5 py-0.5 rounded bg-green-500/15 text-green-400">{t('connected')}</span>
                 ) : (
-                  <span className="text-2xs px-1.5 py-0.5 rounded bg-muted text-muted-foreground">Not connected</span>
+                  <span className="text-2xs px-1.5 py-0.5 rounded bg-muted text-muted-foreground">{t('notConnected')}</span>
                 )}
               </div>
               {isGoogleConnected && currentUser.email ? (
