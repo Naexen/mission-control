@@ -2157,6 +2157,7 @@ interface FileEntry {
 
 export function FilesTab({ agent }: { agent: Agent }) {
   const t = useTranslations('agentDetail')
+  const tc = useTranslations('common')
   const [files, setFiles] = useState<FileEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -2227,7 +2228,7 @@ export function FilesTab({ agent }: { agent: Agent }) {
   if (loading && files.length === 0) {
     return (
       <div className="p-6 flex items-center justify-center py-8">
-        <Loader variant="inline" label="Loading files" />
+        <Loader variant="inline" label={tc('loadingFiles')} />
       </div>
     )
   }
@@ -2515,6 +2516,7 @@ interface ChannelEntryInfo {
 
 export function ChannelsTab({ agent }: { agent: Agent }) {
   const t = useTranslations('agentDetail')
+  const tc = useTranslations('common')
   const [channels, setChannels] = useState<ChannelEntryInfo[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -2560,7 +2562,7 @@ export function ChannelsTab({ agent }: { agent: Agent }) {
   if (loading && channels.length === 0) {
     return (
       <div className="p-6 flex items-center justify-center py-8">
-        <Loader variant="inline" label="Loading channels" />
+        <Loader variant="inline" label={tc("loadingChannels")} />
       </div>
     )
   }
@@ -2638,6 +2640,7 @@ interface AgentCronJob {
 
 export function CronTab({ agent }: { agent: Agent }) {
   const t = useTranslations('agentDetail')
+  const tc = useTranslations('common')
   const [allJobs, setAllJobs] = useState<AgentCronJob[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -2678,7 +2681,7 @@ export function CronTab({ agent }: { agent: Agent }) {
   if (loading && allJobs.length === 0) {
     return (
       <div className="p-6 flex items-center justify-center py-8">
-        <Loader variant="inline" label="Loading cron jobs" />
+        <Loader variant="inline" label={tc("loadingCronJobs")} />
       </div>
     )
   }

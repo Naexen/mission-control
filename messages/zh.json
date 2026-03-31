@@ -2,7 +2,7 @@
   "common": {
     "save": "保存",
     "cancel": "取消",
-    "loading": "加载中...",
+    "loading": "加载中",
     "error": "错误",
     "search": "搜索",
     "confirm": "确认",
@@ -27,7 +27,13 @@
     "updateNow": "立即更新",
     "showDetails": "显示详情",
     "hideDetails": "隐藏详情",
-    "moreIssues": "+ {count} 个更多问题"
+    "moreIssues": "+ {count} 个更多问题",
+    "loadingFiles": "正在加载文件",
+    "loadingChannels": "正在加载频道",
+    "loadingCronJobs": "正在加载定时任务",
+    "loadingAgents": "正在加载智能体",
+    "loadingLogs": "正在加载日志",
+    "loadingSettings": "正在加载设置"
   },
   "auth": {
     "missionControl": "任务控制中心",
@@ -86,7 +92,7 @@
     "approvals": "审批",
     "office": "办公室",
     "cron": "定时任务",
-    "webhooks": "Webhooks",
+    "webhooks": "网络钩子",
     "alerts": "告警",
     "github": "GitHub",
     "security": "安全",
@@ -395,7 +401,23 @@
     "saveFailed": "保存失败。",
     "profileImported": "已从中继导入资料。",
     "importFailed": "导入失败。",
-    "accounts": "账户（{count}）"
+    "accounts": "账户（{count}）",
+    "labelConfigured": "已配置",
+    "labelLinked": "已关联",
+    "labelRunning": "运行中",
+    "labelConnected": "已连接",
+    "labelLastConnect": "上次连接",
+    "labelLastMessage": "最后消息",
+    "labelAuthAge": "认证时长",
+    "labelMode": "模式",
+    "labelBot": "机器人",
+    "labelLastStart": "上次启动",
+    "labelWorkspace": "工作区",
+    "labelBaseUrl": "基础URL",
+    "labelPublicKey": "公钥",
+    "na": "无",
+    "labelLastInbound": "最后接收",
+    "labelNip05": "NIP-05"
   },
   "integrations": {
     "title": "集成",
@@ -610,7 +632,7 @@
     "historyBlocked": "受阻：{count}"
   },
   "webhooks": {
-    "title": "Webhooks",
+    "title": "网络钩子",
     "configured": "已配置 {count} 个 Webhook",
     "addWebhook": "+ 添加 Webhook",
     "secretLabel": "Webhook 密钥（立即保存 - 仅显示一次）",
@@ -643,7 +665,7 @@
     "noDeliveries": "暂无投递记录",
     "newWebhook": "新建 Webhook",
     "formName": "名称",
-    "formUrl": "URL",
+    "formUrl": "地址",
     "formEvents": "事件",
     "cancel": "取消",
     "createWebhook": "创建 Webhook"
@@ -877,7 +899,7 @@
     "fallbackModels": "备用模型",
     "fallbacks": "备用",
     "fileNotFound": "文件未找到",
-    "idLabel": "ID",
+    "idLabel": "标识符",
     "identity": "身份",
     "identityContent": "身份内容",
     "identityMdEmpty": "未找到 IDENTITY.md",
@@ -1185,7 +1207,7 @@
     "tokenUsage": "令牌用量",
     "sessionDetails": "会话详情",
     "kind": "类型",
-    "id": "ID",
+    "id": "标识符",
     "lastActivity": "最后活动",
     "messages": "消息数",
     "label": "标签",
@@ -2159,5 +2181,16 @@
     "savePipeline": "保存流水线",
     "stopOnFail": "失败时停止",
     "update": "更新"
+  },
+  "dashboard": {
+    "totalSessions": "总会话数",
+    "activeSessions": "活跃会话",
+    "messages": "消息数",
+    "uptime": "运行时间",
+    "errors": "错误",
+    "systemRunning": "系统运行中",
+    "totalProcessed": "总处理量",
+    "past24h": "过去24小时",
+    "active": "{n}% 活跃"
   }
 }

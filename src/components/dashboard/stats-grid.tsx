@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { formatUptime } from '@/lib/utils'
 
 interface Stats {
@@ -131,14 +132,17 @@ function StatCard({ title, value, icon, trend, subtitle, color = 'default' }: St
 }
 
 export function StatsGrid({ stats, systemStats }: StatsGridProps) {
-  const uptimeFormatted = systemStats?.uptime ? 
-    formatUptime(systemStats.uptime) : 
+  const t = useTranslations('dashboard')
+  const uptimeFormatted = systemStats?.uptime ?
+    formatUptime(systemStats.uptime) :
     formatUptime(Date.now() - stats.uptime)
+
+  const activePct = stats.totalSessions > 0 ? Math.round((stats.activeSessions / stats.totalSessions) * 100) : 0
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
       <StatCard
-        title="Total Sessions"
+        title={t('totalSessions')}
         value={stats.totalSessions}
         icon={<MonitorIcon />}
         trend="stable"
@@ -146,38 +150,38 @@ export function StatsGrid({ stats, systemStats }: StatsGridProps) {
       />
 
       <StatCard
-        title="Active Sessions"
+        title={t('activeSessions')}
         value={stats.activeSessions}
         icon={<PulseCircleIcon />}
         trend="up"
-        subtitle={`${stats.totalSessions > 0 ? Math.round((stats.activeSessions / stats.totalSessions) * 100) : 0}% active`}
+        subtitle={t('active').replace('{n}', String(activePct))}
         color="success"
       />
 
       <StatCard
-        title="Messages"
+        title={t('messages')}
         value={stats.totalMessages.toLocaleString()}
         icon={<ChatIcon />}
         trend="up"
-        subtitle="Total processed"
+        subtitle={t('totalProcessed')}
         color="default"
       />
 
       <StatCard
-        title="Uptime"
+        title={t('uptime')}
         value={uptimeFormatted}
         icon={<UptimeIcon />}
         trend="stable"
-        subtitle="System running"
+        subtitle={t('systemRunning')}
         color="default"
       />
 
       <StatCard
-        title="Errors"
+        title={t('errors')}
         value={stats.errors}
         icon={stats.errors > 0 ? <WarningTriangleIcon /> : <CheckCircleIcon />}
         trend={stats.errors > 0 ? "up" : "stable"}
-        subtitle="Past 24h"
+        subtitle={t('past24h')}
         color={stats.errors > 0 ? "danger" : "success"}
       />
     </div>

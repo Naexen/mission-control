@@ -106,6 +106,7 @@ const subscriptionDropdowns: Record<string, { label: string; value: string }[]> 
 
 export function SettingsPanel() {
   const t = useTranslations('settings')
+  const tc = useTranslations('common')
   const { currentUser, setShowOnboarding } = useMissionControl()
   const navigateToPanel = useNavigateToPanel()
   const [settings, setSettings] = useState<Setting[]>([])
@@ -388,7 +389,7 @@ export function SettingsPanel() {
   }
 
   if (loading) {
-    return <Loader variant="panel" label="Loading settings" />
+    return <Loader variant="panel" label={tc('loadingSettings')} />
   }
 
   if (error) {

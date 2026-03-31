@@ -95,6 +95,7 @@ const statusCardStyles: Record<string, { edge: string; glow: string; dot: string
 
 export function AgentSquadPanelPhase3() {
   const t = useTranslations('agentSquadPhase3')
+  const tc = useTranslations('common')
   const { agents, setAgents } = useMissionControl()
   const [loading, setLoading] = useState(agents.length === 0)
   const [error, setError] = useState<string | null>(null)
@@ -301,7 +302,7 @@ export function AgentSquadPanelPhase3() {
   }, {} as Record<string, number>)
 
   if (loading && agents.length === 0) {
-    return <Loader variant="panel" label="Loading agents" />
+    return <Loader variant="panel" label={tc('loadingAgents')} />
   }
 
   return (

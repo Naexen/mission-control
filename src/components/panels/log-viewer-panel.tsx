@@ -31,6 +31,7 @@ function downloadFile(content: string, filename: string, mime: string) {
 
 export function LogViewerPanel() {
   const t = useTranslations('logViewer')
+  const tc = useTranslations('common')
   const { logs, logFilters, setLogFilters, clearLogs, addLog } = useMissionControl()
   const [isAutoScroll, setIsAutoScroll] = useState(true)
   const [availableSources, setAvailableSources] = useState<string[]>([])
@@ -357,7 +358,7 @@ export function LogViewerPanel() {
           className="h-full overflow-auto p-4 space-y-2 font-mono text-sm"
         >
           {isLoading ? (
-            <Loader variant="panel" label="Loading logs" />
+            <Loader variant="panel" label={tc('loadingLogs')} />
           ) : filteredLogs.length === 0 ? (
             <div className="flex items-center justify-center h-32 text-muted-foreground">
               {t('noLogs')}

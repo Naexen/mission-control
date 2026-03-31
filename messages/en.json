@@ -2,7 +2,7 @@
   "common": {
     "save": "Save",
     "cancel": "Cancel",
-    "loading": "Loading...",
+    "loading": "Loading",
     "error": "Error",
     "search": "Search",
     "confirm": "Confirm",
@@ -27,7 +27,13 @@
     "updateNow": "Update Now",
     "showDetails": "Show Details",
     "hideDetails": "Hide Details",
-    "moreIssues": "+ {count} more issue{count, plural, one {} other {s}}"
+    "moreIssues": "+ {count} more issue{count, plural, one {} other {s}}",
+    "loadingFiles": "Loading files",
+    "loadingChannels": "Loading channels",
+    "loadingCronJobs": "Loading cron jobs",
+    "loadingAgents": "Loading agents",
+    "loadingLogs": "Loading logs",
+    "loadingSettings": "Loading settings"
   },
   "auth": {
     "missionControl": "Mission Control",
@@ -395,7 +401,23 @@
     "saveFailed": "Save failed.",
     "profileImported": "Profile imported from relays.",
     "importFailed": "Import failed.",
-    "accounts": "{count, plural, one {Accounts ({count})} other {Accounts ({count})}}"
+    "accounts": "{count, plural, one {Accounts ({count})} other {Accounts ({count})}}",
+    "labelConfigured": "Configured",
+    "labelLinked": "Linked",
+    "labelRunning": "Running",
+    "labelConnected": "Connected",
+    "labelLastConnect": "Last connect",
+    "labelLastMessage": "Last message",
+    "labelAuthAge": "Auth age",
+    "labelMode": "Mode",
+    "labelBot": "Bot",
+    "labelLastStart": "Last start",
+    "labelWorkspace": "Workspace",
+    "labelBaseUrl": "Base URL",
+    "labelPublicKey": "Public Key",
+    "na": "n/a",
+    "labelLastInbound": "Last inbound",
+    "labelNip05": "NIP-05"
   },
   "integrations": {
     "title": "Integrations",
@@ -2155,5 +2177,16 @@
     "tabStatus": "Status",
     "unhealthy": "Unhealthy",
     "unreachable": "Unreachable"
+  },
+  "dashboard": {
+    "totalSessions": "Total Sessions",
+    "activeSessions": "Active Sessions",
+    "messages": "Messages",
+    "uptime": "Uptime",
+    "errors": "Errors",
+    "systemRunning": "System running",
+    "totalProcessed": "Total processed",
+    "past24h": "Past 24h",
+    "active": "{n}% active"
   }
 }

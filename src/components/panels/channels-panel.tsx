@@ -305,13 +305,13 @@ function WhatsAppCard({ status, accounts, onProbe, probing, onAction, actionBusy
   return (
     <CardShell platform="whatsapp" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Linked" value={yesNo(status?.linked)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        <StatusRow label="Connected" value={yesNo(status?.connected)} />
-        <StatusRow label="Last connect" value={relativeTime(status?.lastConnectedAt)} />
-        <StatusRow label="Last message" value={relativeTime(status?.lastMessageAt)} />
-        <StatusRow label="Auth age" value={formatDuration(status?.authAgeMs)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelLinked')} value={yesNo(status?.linked)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        <StatusRow label={t('labelConnected')} value={yesNo(status?.connected)} />
+        <StatusRow label={t('labelLastConnect')} value={relativeTime(status?.lastConnectedAt)} />
+        <StatusRow label={t('labelLastMessage')} value={relativeTime(status?.lastMessageAt)} />
+        <StatusRow label={t('labelAuthAge')} value={formatDuration(status?.authAgeMs)} />
       </div>
 
       <ErrorCallout message={status?.lastError} />
@@ -355,11 +355,11 @@ function TelegramCard({ status, accounts, onProbe, probing }: PlatformCardProps)
   return (
     <CardShell platform="telegram" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        <StatusRow label="Mode" value={status?.mode ?? 'n/a'} />
-        {botUsername && <StatusRow label="Bot" value={`@${botUsername}`} />}
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        <StatusRow label={t('labelMode')} value={status?.mode ?? t('na')} />
+        {botUsername && <StatusRow label={t('labelBot')} value={`@${botUsername}`} />}
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
       <ProbeResult probe={status?.probe} />
@@ -374,10 +374,10 @@ function DiscordCard({ status, accounts, onProbe, probing }: PlatformCardProps) 
   return (
     <CardShell platform="discord" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        {botUsername && <StatusRow label="Bot" value={botUsername} />}
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        {botUsername && <StatusRow label={t('labelBot')} value={botUsername} />}
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
       <ProbeResult probe={status?.probe} />
@@ -393,11 +393,11 @@ function SlackCard({ status, accounts, onProbe, probing }: PlatformCardProps) {
   return (
     <CardShell platform="slack" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        {teamName && <StatusRow label="Workspace" value={teamName} />}
-        {botName && <StatusRow label="Bot" value={botName} />}
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        {teamName && <StatusRow label={t('labelWorkspace')} value={teamName} />}
+        {botName && <StatusRow label={t('labelBot')} value={botName} />}
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
       <ProbeResult probe={status?.probe} />
@@ -410,10 +410,10 @@ function SignalCard({ status, accounts, onProbe, probing }: PlatformCardProps) {
   return (
     <CardShell platform="signal" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        <StatusRow label="Base URL" value={status?.baseUrl ?? 'n/a'} />
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        <StatusRow label={t('labelBaseUrl')} value={status?.baseUrl ?? 'n/a'} />
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
       <ProbeResult probe={status?.probe} />
@@ -480,10 +480,10 @@ function NostrCard({ status, accounts, onProbe, probing, onAction, actionBusy }:
   return (
     <CardShell platform="nostr" status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        <StatusRow label="Public Key" value={truncatePubkey(status?.publicKey ?? primaryAccount?.publicKey)} />
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        <StatusRow label={t('labelPublicKey')} value={truncatePubkey(status?.publicKey ?? primaryAccount?.publicKey)} />
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
 
@@ -553,10 +553,10 @@ function GenericChannelCard({ platform, label, status, accounts, onProbe, probin
   return (
     <CardShell platform={platform} label={label} status={status} accounts={accounts} onProbe={onProbe} probing={probing}>
       <div className="space-y-0.5">
-        <StatusRow label="Configured" value={yesNo(status?.configured)} />
-        <StatusRow label="Running" value={yesNo(status?.running)} />
-        <StatusRow label="Connected" value={yesNo(status?.connected)} />
-        <StatusRow label="Last start" value={relativeTime(status?.lastStartAt)} />
+        <StatusRow label={t('labelConfigured')} value={yesNo(status?.configured)} />
+        <StatusRow label={t('labelRunning')} value={yesNo(status?.running)} />
+        <StatusRow label={t('labelConnected')} value={yesNo(status?.connected)} />
+        <StatusRow label={t('labelLastStart')} value={relativeTime(status?.lastStartAt)} />
       </div>
       <ErrorCallout message={status?.lastError} />
       <ProbeResult probe={status?.probe} />
@@ -609,10 +609,10 @@ function AccountList({ accounts }: { accounts: ChannelAccount[] }) {
             <span className="font-medium text-foreground">{acct.name || acct.accountId}</span>
             <span className="text-muted-foreground text-[10px]">{acct.accountId}</span>
           </div>
-          <StatusRow label="Running" value={yesNo(acct.running)} />
-          <StatusRow label="Configured" value={yesNo(acct.configured)} />
-          <StatusRow label="Connected" value={yesNo(acct.connected)} />
-          {acct.lastInboundAt && <StatusRow label="Last inbound" value={relativeTime(acct.lastInboundAt)} />}
+          <StatusRow label={t('labelRunning')} value={yesNo(acct.running)} />
+          <StatusRow label={t('labelConfigured')} value={yesNo(acct.configured)} />
+          <StatusRow label={t('labelConnected')} value={yesNo(acct.connected)} />
+          {acct.lastInboundAt && <StatusRow label={t('labelLastInbound')} value={relativeTime(acct.lastInboundAt)} />}
           {acct.lastError && (
             <div className="text-red-400 break-words mt-1">{acct.lastError}</div>
           )}
