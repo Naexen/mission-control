@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
 import { useMissionControl } from '@/store'
+import { useTranslations } from 'next-intl'
 import { useNavigateToPanel } from '@/lib/navigation'
 
 interface ChecklistItem {
@@ -13,6 +14,7 @@ interface ChecklistItem {
 }
 
 export function OnboardingChecklistWidget() {
+  const t = useTranslations('onboarding')
   const { agents, tasks, securityPosture, dashboardMode } = useMissionControl()
   const navigateToPanel = useNavigateToPanel()
   const [visible, setVisible] = useState(false)
@@ -105,7 +107,7 @@ export function OnboardingChecklistWidget() {
   if (celebrating) {
     return (
       <section className={`rounded-xl border ${accentBorder} bg-card p-6 text-center`}>
-        <div className={`text-xl font-bold mb-1 ${accentText}`}>Station Fully Operational</div>
+        <div className={`text-xl font-bold mb-1 ${accentText}`}>{t('stationFullyOperational')}</div>
         <p className="text-sm text-muted-foreground">All systems online. You&apos;re ready to go.</p>
       </section>
     )

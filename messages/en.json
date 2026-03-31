@@ -111,7 +111,8 @@
     },
     "collapseSidebar": "Collapse sidebar",
     "expandSidebar": "Expand sidebar",
-    "more": "More"
+    "more": "More",
+    "missionControl": "Mission Control"
   },
   "settings": {
     "language": "Language",
@@ -375,7 +376,8 @@
       "securityScanDescription": "Verify network, runtime, and OpenClaw hardening before you launch the station.",
       "launchStation": "Launch Station",
       "launchAnyway": "Launch anyway"
-    }
+    },
+    "stationFullyOperational": "Station Fully Operational"
   },
   "channels": {
     "title": "Channels",
@@ -860,7 +862,14 @@
     "submit": "Submit",
     "loadingTranscript": "Loading transcript...",
     "noSessionMessages": "No session messages",
-    "dunkIt": "Dunk It"
+    "dunkIt": "Dunk It",
+    "github": "GitHub",
+    "agentSession": "Agent Session",
+    "targetSession": "Target Session",
+    "useGh": "Use GitHub Issues to track tasks and blockers across the team.",
+    "howNotificationsWork": "How notifications work",
+    "comments": "Comments",
+    "broadcasts": "Broadcasts"
   },
   "cronManagement": {
     "title": "Cron Management",
@@ -2207,7 +2216,8 @@
     "totalProcessed": "Total processed",
     "past24h": "Past 24h",
     "active": "{n}% active",
-    "overview": "Overview"
+    "overview": "Overview",
+    "availableWidgets": "Available Widgets"
   },
   "launchSequence": {
     "title": "Launch Sequence",
@@ -2240,5 +2250,11 @@
     "topProcesses": "Top Processes",
     "process": "Process",
     "networkIO": "Network I/O"
+  },
+  "runtimeHealth": {
+    "localRuntimeHealth": "Local Runtime Health"
+  },
+  "taskFlow": {
+    "taskFlow": "Task Flow"
   }
 }

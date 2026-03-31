@@ -1522,7 +1522,7 @@ function TaskDetailModal({
               {(task.github_issue_number || task.github_branch || task.github_pr_number) && (
                 <>
                   <div className="col-span-2 mt-2 pt-2 border-t border-border/50">
-                    <span className="text-muted-foreground text-xs font-medium uppercase tracking-wider">GitHub</span>
+                    <span className="text-muted-foreground text-xs font-medium uppercase tracking-wider">{t('github')}</span>
                   </div>
                   {task.github_issue_number && task.github_repo && (
                     <div>
@@ -1565,7 +1565,7 @@ function TaskDetailModal({
               {task.metadata?.dispatch_session_id && (
                 <>
                   <div className="col-span-2 mt-2 pt-2 border-t border-border/50">
-                    <span className="text-muted-foreground text-xs font-medium uppercase tracking-wider">Agent Session</span>
+                    <span className="text-muted-foreground text-xs font-medium uppercase tracking-wider">{t('agentSession')}</span>
                   </div>
                   <div className="col-span-2">
                     <Button
@@ -1634,9 +1634,9 @@ function TaskDetailModal({
             </form>
 
             <div className="mt-5 bg-blue-500/5 border border-blue-500/15 rounded-lg p-3 text-xs text-muted-foreground space-y-1">
-              <div className="font-medium text-blue-300">How notifications work</div>
-              <div><strong className="text-foreground">Comments</strong> are persisted on the task and notify all subscribers. Subscribers are auto-added when they: create the task, are assigned to it, comment on it, or are @mentioned.</div>
-              <div><strong className="text-foreground">Broadcasts</strong> send a one-time notification to all current subscribers without creating a comment record.</div>
+              <div className="font-medium text-blue-300">{t('howNotificationsWork')}</div>
+              <div><strong className="text-foreground">{t('comments')}</strong> are persisted on the task and notify all subscribers. Subscribers are auto-added when they: create the task, are assigned to it, comment on it, or are @mentioned.</div>
+              <div><strong className="text-foreground">{t('broadcasts')}</strong> send a one-time notification to all current subscribers without creating a comment record.</div>
             </div>
 
             <div className="mt-6 border-t border-border pt-4">
@@ -2141,7 +2141,7 @@ function CreateTaskModal({
 
             {formData.assigned_to && agentSessions.length > 0 && (
               <div>
-                <label htmlFor="create-target-session" className="block text-sm text-muted-foreground mb-1">Target Session</label>
+                <label htmlFor="create-target-session" className="block text-sm text-muted-foreground mb-1">{t('targetSession')}</label>
                 <select
                   id="create-target-session"
                   value={formData.target_session}
@@ -2394,7 +2394,7 @@ function EditTaskModal({
 
             {formData.assigned_to && agentSessions.length > 0 && (
               <div>
-                <label htmlFor="edit-target-session" className="block text-sm text-muted-foreground mb-1">Target Session</label>
+                <label htmlFor="edit-target-session" className="block text-sm text-muted-foreground mb-1">{t('targetSession')}</label>
                 <select
                   id="edit-target-session"
                   value={formData.target_session}

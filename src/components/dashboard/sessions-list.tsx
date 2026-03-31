@@ -154,7 +154,7 @@ export function SessionsList({ sessions }: SessionsListProps) {
   return (
     <div className="bg-card rounded-lg border border-border">
       <div className="p-4 border-b border-border">
-        <h3 className="font-semibold text-foreground">Active Sessions</h3>
+        <h3 className="font-semibold text-foreground">{t('activeSessions')}</h3>
         <p className="text-sm text-muted-foreground">
           {sessions.length} total • {activeSessions.length} active
         </p>

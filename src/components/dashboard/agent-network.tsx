@@ -280,7 +280,7 @@ export function AgentNetwork({ agents, sessions }: AgentNetworkProps) {
   return (
     <div className="void-panel">
       <div className="p-4 border-b border-border">
-        <h3 className="font-semibold text-foreground">Agent Network</h3>
+        <h3 className="font-semibold text-foreground">{t('agentNetwork')}</h3>
         <p className="text-sm text-muted-foreground">
           Visual representation of agent relationships
         </p>

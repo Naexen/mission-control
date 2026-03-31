@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { useMissionControl } from '@/store'
+import { useTranslations } from 'next-intl'
 import { WIDGET_CATALOG, getDefaultLayout, getAvailableWidgets, getWidgetById } from '@/lib/dashboard-widgets'
 import { Button } from '@/components/ui/button'
 import type { DashboardData } from './widget-primitives'

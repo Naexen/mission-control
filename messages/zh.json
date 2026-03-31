@@ -111,7 +111,8 @@
     },
     "collapseSidebar": "收起侧边栏",
     "expandSidebar": "展开侧边栏",
-    "more": "更多"
+    "more": "更多",
+    "missionControl": "任务控制中心"
   },
   "settings": {
     "language": "语言",
@@ -377,7 +378,8 @@
       "securityScanDescription": "在启动站点前验证网络、运行时和 OpenClaw 加固状态。",
       "launchStation": "启动站点",
       "launchAnyway": "仍然启动"
-    }
+    },
+    "stationFullyOperational": "工作站完全运行"
   },
   "channels": {
     "title": "频道",
@@ -1102,7 +1104,14 @@
     "submit": "提交",
     "loadingTranscript": "加载记录中...",
     "noSessionMessages": "无会话消息",
-    "dunkIt": "完成"
+    "dunkIt": "完成",
+    "github": "GitHub",
+    "agentSession": "智能体会话",
+    "targetSession": "目标会话",
+    "useGh": "使用 GitHub Issues 追踪团队任务和阻塞项",
+    "howNotificationsWork": "通知如何工作",
+    "comments": "评论",
+    "broadcasts": "广播"
   },
   "cronManagement": {
     "title": "定时任务管理",
@@ -2213,7 +2222,8 @@
     "totalProcessed": "总处理量",
     "past24h": "过去24小时",
     "active": "{n}% 活跃",
-    "overview": "概览"
+    "overview": "概览",
+    "availableWidgets": "可用小组件"
   },
   "launchSequence": {
     "title": "启动序列",
@@ -2246,5 +2256,14 @@
     "topProcesses": "主要进程",
     "process": "进程",
     "networkIO": "网络 I/O"
+  },
+  "runtimeHealth": {
+    "localRuntimeHealth": "本地运行时健康"
+  },
+  "taskFlow": {
+    "taskFlow": "任务流"
+  },
+  "githubSignal": {
+    "githubSignal": "GitHub 信号"
   }
 }
