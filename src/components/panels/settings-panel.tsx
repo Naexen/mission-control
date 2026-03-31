@@ -1131,7 +1131,7 @@ function AccountOAuthSection() {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2 pt-2">
-        <h3 className="text-sm font-medium text-foreground">Account</h3>
+        <h3 className="text-sm font-medium text-foreground">{t('account')}</h3>
       </div>
 
       <div className="bg-card border border-border rounded-lg p-4">

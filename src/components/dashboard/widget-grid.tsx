@@ -40,6 +40,7 @@ const SIZE_CLASSES: Record<string, string> = {
 }
 
 export function WidgetGrid({ data }: { data: DashboardData }) {
+  const t = useTranslations('dashboard')
   const { dashboardLayout, setDashboardLayout, dashboardMode } = useMissionControl()
   const mode = dashboardMode === 'local' ? 'local' : 'full'
   const [customizing, setCustomizing] = useState(false)
@@ -232,7 +233,7 @@ export function WidgetGrid({ data }: { data: DashboardData }) {
       {/* Customize mode: hidden widgets + controls */}
       {customizing && hiddenWidgets.length > 0 && (
         <section className="space-y-2">
-          <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Available Widgets</h4>
+          <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('availableWidgets')}</h4>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
             {hiddenWidgets.map((widget) => (
               <button
