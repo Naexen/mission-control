@@ -105,9 +105,9 @@
     "debug": "Debug",
     "settings": "Settings",
     "group": {
-      "observe": "OBSERVE",
-      "automate": "AUTOMATE",
-      "admin": "ADMIN"
+      "observe": "Observe",
+      "automate": "Automate",
+      "admin": "Admin"
     },
     "collapseSidebar": "Collapse sidebar",
     "expandSidebar": "Expand sidebar",
@@ -142,7 +142,12 @@
     "onboarding": "Onboarding",
     "onboardingDescription": "Replay the setup wizard and reset the dashboard checklist",
     "replayOnboarding": "Replay Onboarding",
-    "resetting": "Resetting..."
+    "resetting": "Resetting...",
+    "essential": "Essential",
+    "full": "Full",
+    "strict": "Strict",
+    "minimal": "Minimal",
+    "standard": "Standard"
   },
   "boot": {
     "missionControl": "Mission Control",
@@ -174,7 +179,7 @@
     "searching": "Searching...",
     "noResults": "No results found",
     "typeToSearch": "Type to search entities or jump pages instantly",
-    "gatewayConnection": "Gateway Connection",
+    "gatewayConnection": "Gateway connection",
     "status": "Status",
     "host": "Host",
     "latency": "Latency",
@@ -221,11 +226,12 @@
     "gatewayPortRequired": "Gateway port required",
     "creating": "Creating...",
     "createUser": "Create User",
-    "createAndQueue": "Create + Queue"
+    "createAndQueue": "Create + Queue",
+    "gatewayMode": "Gateway Mode"
   },
   "localModeBanner": {
-    "noGatewayDetected": "No OpenClaw gateway detected",
-    "runningInLocalMode": " — running in Local Mode. Monitoring Claude Code sessions, tasks, and local data.",
+    "noGatewayDetected": "No Gateway detected",
+    "runningInLocalMode": "Running in local mode",
     "configureGateway": "Configure Gateway"
   },
   "updateBanner": {
@@ -281,10 +287,10 @@
   },
   "page": {
     "showLiveFeed": "Show live feed",
-    "availableInFullMode": "{panel} is available in Full mode.",
-    "switchToFull": "Switch to Full",
+    "availableInFullMode": "Available in full mode",
+    "switchToFull": "Switch to full mode",
     "goToOverview": "Go to Overview",
-    "requiresGateway": "{panel} requires an OpenClaw gateway connection.",
+    "requiresGateway": "Requires Gateway",
     "configureGateway": "Configure a gateway to enable this panel."
   },
   "onboarding": {

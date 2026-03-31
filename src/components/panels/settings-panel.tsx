@@ -800,9 +800,9 @@ export function SettingsPanel() {
             </p>
             <div className="space-y-2">
               {([
-                { value: 'minimal', label: 'Minimal', desc: 'Basic safety checks only. Best for trusted environments with low risk tolerance overhead.' },
-                { value: 'standard', label: 'Standard', desc: 'Balanced scanning for secrets, injections, and suspicious patterns. Recommended for most deployments.' },
-                { value: 'strict', label: 'Strict', desc: 'Full depth scanning with aggressive blocking. May increase latency. Best for sensitive or compliance-driven environments.' },
+                { value: 'minimal', label: t('minimal'), desc: 'Basic safety checks only. Best for trusted environments with low risk tolerance overhead.' },
+                { value: 'standard', label: t('standard'), desc: 'Balanced scanning for secrets, injections, and suspicious patterns. Recommended for most deployments.' },
+                { value: 'strict', label: t('strict'), desc: 'Full depth scanning with aggressive blocking. May increase latency. Best for sensitive or compliance-driven environments.' },
               ] as const).map(profile => (
                 <button
                   key={profile.value}
@@ -1007,6 +1007,7 @@ export function SettingsPanel() {
 }
 
 function InterfaceModeSelector() {
+  const ts = useTranslations('settings')
   const { interfaceMode, setInterfaceMode } = useMissionControl()
   const [saving, setSaving] = useState(false)
   const navigateToPanel = useNavigateToPanel()
@@ -1040,8 +1041,8 @@ function InterfaceModeSelector() {
       </p>
       <div className="space-y-2">
         {([
-          { value: 'essential' as const, label: 'Essential', desc: 'Focused view with core panels only — Overview, Agents, Tasks, Chat, Activity, Logs, Settings.' },
-          { value: 'full' as const, label: 'Full', desc: 'All panels and advanced features including Memory, Cron, Webhooks, Alerts, Audit, and more.' },
+          { value: 'essential' as const, label: ts('essential'), desc: 'Focused view with core panels only — Overview, Agents, Tasks, Chat, Activity, Logs, Settings.' },
+          { value: 'full' as const, label: ts('full'), desc: 'All panels and advanced features including Memory, Cron, Webhooks, Alerts, Audit, and more.' },
         ]).map(option => (
           <button
             key={option.value}

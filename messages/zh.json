@@ -105,11 +105,11 @@
     "debug": "调试",
     "settings": "设置",
     "group": {
-      "observe": "监控",
+      "observe": "观察",
       "automate": "自动化",
       "admin": "管理"
     },
-    "collapseSidebar": "折叠侧边栏",
+    "collapseSidebar": "收起侧边栏",
     "expandSidebar": "展开侧边栏",
     "more": "更多"
   },
@@ -142,7 +142,12 @@
     "onboarding": "引导设置",
     "onboardingDescription": "重放设置向导并重置仪表板清单",
     "replayOnboarding": "重放引导",
-    "resetting": "重置中..."
+    "resetting": "重置中...",
+    "essential": "精简",
+    "full": "完整",
+    "strict": "严格",
+    "minimal": "最小",
+    "standard": "标准"
   },
   "boot": {
     "missionControl": "任务控制中心",
@@ -166,7 +171,7 @@
     "local": "本地",
     "connected": "已连接",
     "disconnected": "已断开",
-    "reconnecting": "正在重连",
+    "reconnecting": "重新连接中",
     "offline": "离线",
     "retry": "重试 {count}",
     "jumpToSearch": "跳转到页面、任务、智能体...",
@@ -221,11 +226,12 @@
     "gatewayPortRequired": "网关端口为必填项",
     "creating": "创建中...",
     "createUser": "创建用户",
-    "createAndQueue": "创建并排队"
+    "createAndQueue": "创建并排队",
+    "gatewayMode": "网关模式"
   },
   "localModeBanner": {
-    "noGatewayDetected": "未检测到 OpenClaw 网关",
-    "runningInLocalMode": " — 正在以本地模式运行。监控 Claude Code 会话、任务和本地数据。",
+    "noGatewayDetected": "未检测到网关",
+    "runningInLocalMode": "正在本地模式运行",
     "configureGateway": "配置网关"
   },
   "updateBanner": {
@@ -281,10 +287,10 @@
   },
   "page": {
     "showLiveFeed": "显示实时动态",
-    "availableInFullMode": "{panel}在完整模式下可用。",
+    "availableInFullMode": "完整模式可用",
     "switchToFull": "切换到完整模式",
     "goToOverview": "前往概览",
-    "requiresGateway": "{panel}需要 OpenClaw 网关连接。",
+    "requiresGateway": "需要网关",
     "configureGateway": "配置网关以启用此面板。"
   },
   "onboarding": {
@@ -316,18 +322,20 @@
       "getStarted": "开始使用"
     },
     "interfaceMode": {
-      "title": "选择您的站点布局",
-      "description": "精简模式显示操作员最常用的核心面板。完整模式解锁站点上的所有系统 — 记忆、自动化、安全审计等。您可以随时切换。",
+      "title": "选择界面布局",
+      "description": "精简模式显示核心面板，完整模式解锁所有系统功能。随时可以切换。",
       "essential": "精简",
       "full": "完整",
-      "essentialDescription": "精简操作 — 您日常使用的面板：舰队概览、智能体、任务、聊天、活动流、日志和设置。",
+      "essentialDescription": "核心运营面板：舰队概览、智能体、任务、聊天、活动、日志和设置。",
       "essentialPanels1": "舰队概览、智能体、任务、聊天",
-      "essentialPanels2": "活动流、日志、设置",
+      "essentialPanels2": "活动、日志、设置",
       "essentialTotal": "共 7 个面板",
-      "fullDescription": "完整站点访问 — 新增记忆浏览器、Cron 调度、Webhooks、告警、安全审计、费用追踪和网关配置。",
-      "fullIncludes": "包含精简模式的所有内容，另加",
-      "fullPanels": "记忆、Cron、Webhooks、审计",
-      "fullTotal": "所有站点系统已解锁"
+      "fullDescription": "完整功能：记忆浏览器、定时任务、Webhooks、告警、安全审计、费用追踪和网关配置。",
+      "fullIncludes": "包含精简模式全部功能",
+      "fullPanels": "记忆、定时任务、Webhooks、审计",
+      "fullTotal": "解锁全部系统功能",
+      "essentialPanelsTotal": "共7个面板",
+      "selected": "已选择"
     },
     "gatewayLink": {
       "title": "网关链接",
